@@ -11,11 +11,19 @@ def search():
 
 @app.route('/opgg')
 def opgg():
-    username = request.args.get('userName')
+    userName = request.args.get('userName')
     url = f"https://www.op.gg/summoner/userName={userName}"
     
     req = requests.get(url).text
     data = BeautifulSoup(req, 'html.parser')
+    tier=data.select_one("#SummonerLayoutContent > div.tabItem.Content.SummonerLayoutContent.summonerLayout-summary > div.SideContent > div.TierBox.Box > div > div.TierRankInfo > div.TierRank")
+                         
+    win=data.select_one("#SummonerLayoutContent > div.tabItem.Content.SummonerLayoutContent.summonerLayout-summary > div.SideContent > div.TierBox.Box > div > div.TierRankInfo > div.TierInfo > span.WinLose > span.wins")
+                        
+    tier=tier.text
+    win=win.text
+
+    return render_template('opgg.html', userName=userName, tier=tier,win=win)
 
     data.select.one()
     
