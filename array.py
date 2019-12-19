@@ -1,3 +1,4 @@
+
 array = [1 , 2, 3,"four","five","six",True,]
 #print(array[0])
 #print(array[0:3])

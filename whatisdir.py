@@ -1,5 +1,6 @@
 import random
 
+
 numbers = list(range(10))
 choose = random.choice(numbers)
 
